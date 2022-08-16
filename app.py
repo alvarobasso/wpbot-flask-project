@@ -1,28 +1,20 @@
-from flask import Flask, request
-from src.resources.bot.bot import bot_resource
-from flask_restx import Api
-from pymongo import MongoClient
-
-from flask_pymongo import PyMongo
+import os
+from dotenv import load_dotenv
 from bson import json_util
 from bson.objectid import ObjectId
+from pymongo import MongoClient
+from flask import Flask, request
+from flask_restx import Api
+from flask_pymongo import PyMongo
+from src.resources.bot.bot import bot_resource
 
-# NAMESPACES = [
-#     botNameSpace
-# ]
+load_dotenv()
 
 app = Flask(__name__)
-app.config['MONGO_URI'] = 'mongodb+srv://us3r_MDBadmin:ADnTWxnQlunfnaFB@basso.sbxsm.mongodb.net/devolada?retryWrites=true&w=majority'
-
-# client = MongoClient('mongodb+srv://us3r_MDBadmin:ADnTWxnQlunfnaFB@basso.sbxsm.mongodb.net/?retryWrites=true&w=majority')
-# db = client.flask_db
-# db_name = db.devolada
+app.config['MONGO_URI'] = os.environ.get("MONGO_URI")
 
 mongo = PyMongo(app)
-app.config['data_to_pass'] = mongo
-#print(mongo)
-# id = mongo.db.users.insert_one(
-#              {'username': 'a', 'email': 'a', 'password': 'a'})
+app.config['mongo_connection'] = mongo
 
 app.register_blueprint(bot_resource)
 
