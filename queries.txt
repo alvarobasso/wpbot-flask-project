@@ -1,0 +1,3 @@
+db.quotes.find({'_id':ObjectId('630e90b83d70260a87b3c598')}).count()
+
+db.quotes.updateOne( {'_id':ObjectId('630e90b83d70260a87b3c598')}, {$set:{'status':true,'quote_status':'quoted'}} )
