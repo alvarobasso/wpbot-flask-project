@@ -49,12 +49,8 @@ class BotResponses:
                 'message': 'Tienes una cotización pendiente, escribe "cancelar" para cerrar esa cotización o "confirmar" para aceptar el servicio.'
             },
             {
-                'type': 'particular_quoted_first_part',
-                'message': 'El número {} ha solicitado una cotización desde esta ubicación...'
-            },
-            {
-                'type': 'particular_quoted_second_part',
-                'message': 'A esta ubicación. {}'
+                'type': 'particular_quoted',
+                'message': '{} - El número {} ha solicitado una cotización con costo de ${} pesos, distancia de {} y tiempo de {}.'
             },
         ]
         for x in responses:
